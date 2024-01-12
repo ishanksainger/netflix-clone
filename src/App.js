@@ -1,23 +1,59 @@
-import logo from './logo.svg';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Signup from './pages/Signup'
+import Login from './pages/Login'
+import MyProfile from './pages/MyProfile';
+import PrivateRoute from './components/PrivateRoute'
+import OpenRoute from './components/OpenRoute'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getUserDetails } from './services/operations/profileApi';
 
 function App() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      const storedToken = JSON.parse(localStorage.getItem("token"));
+      dispatch(getUserDetails(storedToken, navigate));
+    }
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen w-screen overflow-hidden  bg-black">
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route
+          path="signup"
+          element={
+            <OpenRoute>
+              <Signup />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <OpenRoute>
+              <Login />
+            </OpenRoute>
+          }
+        />
+        <Route 
+        path="/my-profile"
+          element={
+            <PrivateRoute>
+              <MyProfile />
+            </PrivateRoute>
+          }
+        />
+
+      </Routes>
     </div>
   );
 }
