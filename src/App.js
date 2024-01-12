@@ -20,6 +20,7 @@ function App() {
       const storedToken = JSON.parse(localStorage.getItem("token"));
       dispatch(getUserDetails(storedToken, navigate));
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, []);
 
 
