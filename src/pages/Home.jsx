@@ -29,7 +29,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchAllMovies();
-  }, [])
+  }, [])/* eslint-disable react-hooks/exhaustive-deps */
 
   useEffect(()=>{
     if (topRated && trending && comedy && upcoming) {

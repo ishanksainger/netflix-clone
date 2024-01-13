@@ -29,7 +29,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     fetchPopularMovie();
-  }, []);
+  }, []);/* eslint-disable react-hooks/exhaustive-deps */
 
   useEffect(() => {
     randomMovies();
