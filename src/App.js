@@ -45,15 +45,15 @@ function App() {
             </OpenRoute>
           }
         />
-        <Route 
-        path="/my-profile"
+        <Route
+          path="/my-profile"
           element={
             <PrivateRoute>
               <MyProfile />
             </PrivateRoute>
           }
         />
-
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
