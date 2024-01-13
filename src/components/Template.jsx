@@ -42,6 +42,7 @@ const Template = ({ movieType, movie }) => {
 
       setHeartColors(newHeartColors);
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [user?.likedMovies, movieTypes]);
 
   useEffect(() => {

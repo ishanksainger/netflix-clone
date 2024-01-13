@@ -35,7 +35,8 @@ const MyProfile = () => {
 
   useEffect(() => {
     fetchMovie();
-  }, []);/* eslint-disable react-hooks/exhaustive-deps */
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, []);
 
   return (
     <div className='w-full h-full'>
