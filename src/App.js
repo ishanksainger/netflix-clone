@@ -10,7 +10,7 @@ import OpenRoute from './components/OpenRoute'
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getUserDetails } from './services/operations/profileApi';
-
+import Error from './pages/Error'
 function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -53,7 +53,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<Error/>} />
       </Routes>
     </div>
   );
